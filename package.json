@@ -4,9 +4,12 @@
   "description": "tercer tp de dai",
   "license": "ISC",
   "author": "Ranieli y Tanel",
-  "type": "commonjs",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.20"
   }
 }
