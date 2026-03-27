@@ -30,17 +30,19 @@ function mostrarFechaHora() {
 // 4
 import axios from "axios";
 
-const obtenerPais = async (nombrePais) => {
-    const url = `https://restcountries.com/v3.1/name/${nombrePais}`;
-    const response = await axios.get(url);
+import axios from "axios";
 
-    const data = response.data[0];
+async function obtenerPais(nombrePais) {
+  const url = "https://restcountries.com/v3.1/name/" + nombrePais;
+  const response = await axios.get(url);
 
-    console.log("País:", data.name.common);
-    console.log("Capital:", data.capital[0]);
-    console.log("Región:", data.region);
-    console.log("Población:", data.population);
-};
+  const data = response.data[0];
+
+  console.log("País:", data.name.common);
+  console.log("Capital:", data.capital[0]);
+  console.log("Región:", data.region);
+  console.log("Población:", data.population);
+}
 
 //5
 import fs from "fs";
@@ -61,17 +63,17 @@ function buscarProducto(nombre) {
 }
 
 // 6
-const generarCSV = () => {
-  const data = fs.readFileSync("productos.json", "utf-8");
-  const productos = JSON.parse(data);
+import fs from "fs";
+
+function generarCSV() {
+  let contenido = fs.readFileSync("productos.json", "utf-8");
+  let productos = JSON.parse(contenido);
 
   let csv = "nombre,precio\n";
 
-  productos.forEach(p => {
-    csv += `${p.nombre},${p.precio}\n`;
-  });
+  for (let i = 0; i < productos.length; i++) {
+    csv += productos[i].nombre + "," + productos[i].precio + "\n";
+  }
 
   fs.writeFileSync("productos.csv", csv);
-
-  console.log("Archivo productos.csv generado");
-};
+}
